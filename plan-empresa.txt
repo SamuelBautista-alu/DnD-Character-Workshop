@@ -1,0 +1,388 @@
+DATOS PERSONALES DE LOS  PROMOTORES PRINCIPALES
+APARTADO 1
+SOCIO PROMOTOR
+    • Nombre y apellidos: Samuel Bautista Valera                                                          
+    • Edad: 21 años
+    • D.N.I./N.I.F.: 46084893T
+    • Domicilio Particular:  Avda. Madrid nº5 1ºC 03610 PETRER (Alicante)                                                                        
+
+    • Teléfono: 693023883
+    • Estado civil: Soltero
+
+DATOS PROFESIONALES DEL PROMOTOR:
+
+    • Experiencia laboral:  en diferentes empresas del sector 
+                                 
+    • Otros conocimientos o experiencias relacionadas con la actividad empresarial a crear:
+
+Títulos que posee: Poseo el título de técnico en sistemas microinformáticos y redes Actualmente estoy cursando el ciclo formativo de grado superior DAW
+
+DATOS DE LA EMPRESA
+	Razón Social / Nombre de la empresa: HighPlay game studio
+
+    • Forma jurídica:
+S.L.N.E. (Sociedad Limitada Nueva Empresa)
+    • Capital social y estructura del mismo:
+    • Capital social total: 3.000 €
+    • Propietarios: 50% Samuel Bautista, 25% Pedro Fernandez 25% Antonio Alvarez
+    • Entidad bancaria: IES Paco Mollá
+    • Importe solicitado: 10.000 €
+    • Plazo de devolución: 3 años
+    • Tipo de interés: 5% anual fijo
+
+Descripción detallada de la idea de negocio
+
+(Producto / Servicio)
+HighPlay game studio es una empresa independiente dedicada al desarrollo de videojuegos educativos con enfoque sostenible y social, accesibles desde una plataforma web interactiva. Nacida del talento y la colaboración de un pequeño grupo de desarrolladores, la empresa busca unir la innovación tecnológica con el compromiso medioambiental y la educación, ofreciendo experiencias digitales con impacto positivo.
+
+¿A qué se dedica la empresa?
+El objetivo principal de HighPlay game studio es crear y mantener una plataforma online de videojuegos orientada a:
+    • El entretenimiento responsable.
+    • La educación en valores ambientales y sociales.
+    • La inclusividad y la accesibilidad universal.
+    • La concienciación ecológica, mediante contenidos formativos y dinámicas lúdicas.
+La plataforma incluirá juegos diseñados por el propio equipo, además de contenidos descargables, recursos educativos, funcionalidades de comunidad y herramientas de seguimiento para educadores. Además, la empresa fomentará el uso de tecnologías sostenibles en el desarrollo y alojamiento de la plataforma, como servidores de bajo consumo o energía renovable.
+
+¿Qué tipo de trabajo se le realiza al cliente?
+HighPlay game studio no solo desarrolla videojuegos para el usuario final, sino que también ofrece soluciones adaptadas a distintos tipos de clientes:
+1. Usuario general (jugadores interesados en contenidos con valor):
+    • Acceso gratuito a juegos básicos desde cualquier dispositivo.
+    • Opciones de suscripción premium para desbloquear contenido exclusivo, libre de anuncios y con nuevas funcionalidades.
+    • Personalización de la experiencia de juego (avatares, entornos, recompensas digitales).
+    • Participación en una comunidad interactiva donde pueden compartir ideas, progresos y sugerencias.
+2. Centros educativos y organizaciones:
+    • Licencias anuales multiusuario adaptadas por niveles educativos.
+    • Recursos didácticos complementarios (guías, fichas, actividades offline).
+    • Informes de progreso para educadores.
+    • Juegos personalizables según temas tratados en el aula (por ejemplo: reciclaje, energía, consumo responsable).
+    • Asistencia y soporte técnico para su implementación en entornos educativos.
+
+¿Qué diferencia a HighPlay game studio?
+    • Compromiso ambiental: desde los contenidos hasta la tecnología empleada (hosting ecológico, reducción del consumo de recursos).
+    • Enfoque educativo real: desarrollado con el apoyo de pedagogos y expertos en sostenibilidad.
+    • Accesibilidad universal: juegos diseñados con criterios de accesibilidad para personas con diversidad funcional.
+    • Diseño innovador y adaptativo: plataforma visual, funcional y dinámica.
+    • Modelo mixto de monetización: accesible para todos, con una versión gratuita y otra premium que financia la mejora continua del servicio.
+
+
+🧠 Innovaciones aplicadas a la idea de negocio
+En nuestra empresa de desarrollo de videojuegos, hemos apostado por integrar innovaciones tecnológicas, sociales y ambientales tanto en el producto como en los procesos. Algunas de las más destacadas son:
+🔹 Tipos de innovación en la página web:
+    1. Eco-diseño web:
+        ◦ Desarrollo de una web ligera y optimizada para reducir el consumo energético al mínimo.
+        ◦ Uso de hosting verde (proveedores que emplean energía renovable).
+        ◦ Imágenes comprimidas, carga diferida (lazy loading) y código eficiente.
+    2. Accesibilidad e inclusión:
+        ◦ Diseño inclusivo, accesible para personas con discapacidad (cumpliendo normativa WCAG 2.1).
+        ◦ Soporte multilingüe y navegación simplificada.
+    3. Gamificación educativa:
+        ◦ Uso de la web como plataforma para promover educación ambiental, diversidad e inclusión, a través de minijuegos y contenido interactivo.
+    4. Feedback y participación social:
+        ◦ Herramientas que permiten a los usuarios aportar ideas, sugerencias o votar sobre futuros contenidos, fomentando una comunidad participativa.
+
+🌱 Idea más sostenible:
+Nuestra idea más sostenible es el modelo de producción y operación 100% digital y remoto, enfocado en:
+    • Minimizar la huella de carbono mediante teletrabajo.
+    • Reducir al máximo el consumo energético.
+    • Crear videojuegos que incluyan temáticas de sostenibilidad y educación ambiental.
+    • Promover el consumo responsable a través de mensajes dentro del juego.
+
+🌍 Relación con los 17 ODS (Objetivos de Desarrollo Sostenible)
+A continuación, se identifican los ODS con los que nuestra empresa se alinea directamente:
+ODS	Nombre	Aplicación en la empresa
+4	Educación de calidad	Videojuegos educativos que promueven habilidades y conciencia sobre sostenibilidad y justicia social.
+12	Producción y consumo responsables	Desarrollo de productos digitales, sin consumo físico, bajo un enfoque ético y sostenible.
+13	Acción por el clima	Uso de energías renovables, reducción de emisiones por transporte y hosting ecológico.
+
+
+🔄 Aplicación de la sostenibilidad en las tres dimensiones
+Dimensión	Aplicación en la empresa
+Ambiental	Hosting verde, código eficiente, eliminación de transporte físico, residuos nulos, sensibilización ambiental en los videojuegos.
+Social	Inclusión en diseño de videojuegos, prácticas laborales igualitarias, contenido con impacto educativo.
+Económica	Modelo de negocio digital escalable, control de costes al evitar oficinas físicas, acceso global a mercados.
+
+📜 Normativa aplicable (ejemplos en España/EU):
+    • Ley de Cambio Climático y Transición Energética
+    • Ley General de Telecomunicaciones
+    • Reglamento de Ecodiseño para productos digitales
+    • Normativa sobre accesibilidad web (WCAG 2.1 / UNE-EN 301549)
+    • Reglamento Europeo de Protección de Datos (RGPD)
+
+🏡 Teletrabajo, consumo y sostenibilidad
+Elemento	Estrategia Adoptada
+Teletrabajo	100% remoto. Reduce desplazamientos, consumo de papel y uso de recursos físicos.
+Consumo energético	Fomento del uso de equipos eficientes y compensación de CO₂ de servidores.
+Transporte	Eliminado en el día a día. Solo viajes puntuales compensados con acciones sostenibles.
+Decisiones de consumo	Prioridad a proveedores responsables y herramientas open-source o con menor impacto ambiental.
+Generación de residuos	Residuos digitales mínimos. Política de reciclaje y economía circular para equipos y software.
+
+✅ 1. Tabla comparativa: Página web propia vs competencia
+Aquí te presento una tabla comparativa simple (puedes adaptarla con nombres de competidores específicos si los tienes):
+Aspecto	Nuestra Página Web	Ritojuegos	Bugisoft
+Velocidad de carga	Alta (optimización y diseño ligero)	Media	Baja
+Consumo energético	Bajo (hosting verde y código eficiente)	Alto (hosting tradicional)	Medio
+Accesibilidad web	Cumple WCAG 2.1 (alta accesibilidad)	Accesibilidad limitada	Accesibilidad parcial
+Diseño inclusivo	Sí, adaptado a diversidad de públicos	No adaptado	Parcialmente adaptado
+Gamificación educativa	Integrada en la web con minijuegos	No disponible	Disponible, pero superficial
+Interacción con la comunidad	Participativa (votaciones, feedback)	Solo formularios	Comunidad cerrada
+Optimización SEO	Alta, orientada a sostenibilidad y videojuegos	Media	Media
+Responsabilidad ambiental	Alto compromiso sostenible	Sin mención	Mención parcial
+Idiomas	Multilingüe	Solo español	Español/Inglés
+Coste de mantenimiento	Bajo (por diseño eficiente)	Alto	Medio
+⚠️ Puedes personalizar esta tabla con los nombres reales de tus competidores o páginas de referencia del sector (como estudios indie o plataformas de distribución digital de videojuegos).
+
+📋 2. Modelo de negocio CANVAS – Empresa de desarrollo de videojuegos
+Aquí tienes la plantilla adaptada a tu negocio:
+Bloque	Contenido
+1. Propuesta de valor	Videojuegos creativos, educativos y sostenibles. Plataforma web accesible y ecológica con contenidos interactivos. Enfoque en impacto social y ambiental.
+2. Segmentos de clientes	- Jugadores conscientes (indie, casuales) 
+- Centros educativos 
+- Padres que buscan contenido formativo 
+- Empresas interesadas en videojuegos con propósito
+3. Canales	- Página web oficial 
+- Plataformas de juegos (Steam, Itch.io, Epic Store) 
+- Redes sociales 
+- Eventos y ferias de videojuegos 
+- Marketing digital
+4. Relaciones con clientes	- Comunidad participativa 
+- Atención personalizada por canales digitales 
+- Boletines informativos 
+- Juegos con actualización y retroalimentación
+5. Fuentes de ingresos	- Venta de videojuegos 
+- Suscripciones o DLCs sostenibles 
+- Patrocinios y colaboraciones educativas 
+- Merchandising digital
+6. Recursos clave	- Equipo de desarrollo (programadores, artistas, diseñadores) 
+- Infraestructura tecnológica (servidores verdes) 
+- Propiedad intelectual (juegos) 
+- Comunidad activa
+7. Actividades clave	- Diseño y desarrollo de videojuegos 
+- Mantenimiento de la web 
+- Marketing digital 
+- Atención a la comunidad 
+- Investigación en sostenibilidad y accesibilidad
+8. Socios clave	- Plataformas de distribución 
+- Proveedores de hosting verde 
+- Instituciones educativas 
+- ONGs ambientales o sociales
+9. Estructura de costes	- Sueldos y freelance 
+- Licencias y herramientas de software 
+- Hosting y dominios web 
+- Marketing y publicidad 
+- Formación continua
+
+Mapa de Empatía
+Usuario principal: Jugador/a consciente einteresado en juegos sostenibles.
+Aspecto	Contenido
+¿Qué piensa y siente?	Quiere experiencias de juego entretenidas, educativas y con impacto positivo en el medio ambiente y la sociedad. Busca plataformas confiables y accesibles.
+¿Qué ve?	Competencia con juegos poco sostenibles o que no tienen contenido educativo. Sitios web con poca accesibilidad y diseño poco atractivo.
+¿Qué dice y hace?	Comparte contenido de juegos con valores, participa en comunidades online, recomienda juegos a su entorno. Busca plataformas con buena usabilidad y ética.
+¿Qué oye?	Recomendaciones de amigos, opiniones en redes sociales sobre juegos responsables y educativos, noticias sobre sostenibilidad y videojuegos.
+Esfuerzos (miedos, frustraciones)	Juegos que consumen mucho tiempo, plataformas poco intuitivas o que contaminan (hosting no sostenible). Contenido aburrido o poco inclusivo.
+Resultados (ganancias, deseos)	Quiere sentirse parte de una comunidad, disfrutar sin culpa ambiental, apoyar proyectos éticos y accesibles para todos.
+
+Logotipo de la empresa
+El logotipo represnta un mando de juegos con unas alas de dragón, cual mensaje indica que los juegos nos pueden llevar a cumplir nuestros sueños, que siempre están en lo alto.
+
+Logotipo del juego
+
+El logotipo del juego nos transmite la aventura aque se nos avecina en el mundo de Sannorix.
+Definición del problema
+Después de empatizar con los usuarios y analizar sus necesidades y frustraciones, definimos el problema clave que queremos resolver:
+    • Problema: Los usuarios buscan una plataforma de videojuegos que combine entretenimiento con valores educativos y sostenibles, pero las opciones actuales no ofrecen una experiencia accesible, inclusiva y responsable con el medio ambiente.
+    • Objetivo: Crear una página web que proporcione juegos interactivos y educativos, sea fácil de usar, accesible para todo tipo de usuarios y que minimice su impacto ambiental mediante tecnología eficiente y hosting verde.
+
+Generación de ideas
+Con el problema claro, nos enfocamos en generar soluciones creativas para cubrir las necesidades identificadas. Algunas ideas clave son:
+    • Integrar mini juegos y actividades con temáticas de sostenibilidad y educación ambiental dentro de la web.
+    • Implementar un sistema de feedback en tiempo real para que la comunidad pueda sugerir mejoras y nuevos contenidos.
+    • Diseñar la web con un enfoque en la accesibilidad, incluyendo opciones para personas con discapacidades visuales, auditivas y motoras.
+    • Usar técnicas de optimización web para reducir el consumo energético, como compresión de imágenes, carga diferida y un diseño minimalista.
+    • Establecer alianzas con proveedores de hosting ecológico para reducir la huella de carbono.
+    • Añadir contenido multilingüe para alcanzar a una audiencia global.
+
+Construcción de prototipos
+Se desarrolla una versión inicial de la página web que incluye:
+    • Interfaz visual clara y amigable, con un menú intuitivo y accesible.
+    • Una selección de mini juegos educativos que promuevan la sostenibilidad.
+    • Formularios de contacto y feedback para que los usuarios participen y aporten ideas.
+    • Elementos de accesibilidad como texto alternativo para imágenes, navegación por teclado y contraste adecuado.
+    • Implementación de hosting con energía renovable y optimización del código para minimizar el consumo de recursos.
+Este prototipo sirve para visualizar y probar la idea antes de una implementación completa.
+
+Pruebas y validación
+Se realizan pruebas con un grupo representativo de usuarios (jugadores, educadores, personas con diferentes capacidades) para evaluar:
+    • Usabilidad: Facilidad para navegar y usar las funcionalidades.
+    • Accesibilidad: Si las personas con discapacidad pueden interactuar sin problemas.
+    • Interés y valor educativo: Percepción sobre los contenidos y juegos ofrecidos.
+    • Impacto ambiental: Evaluación de la reducción de consumo energético y percepción del compromiso sostenible.
+    • Feedback general: Comentarios, sugerencias y puntos de mejora.
+Los resultados permiten ajustar el diseño, corregir errores, mejorar el contenido y validar que la web cumple su función social, educativa y sostenible.
+
+1. Descripción de la aplicación / página web
+Nuestra aplicación web es una plataforma digital interactiva para el acceso y disfrute de videojuegos con enfoque educativo y sostenible. Incluye:
+    • Interfaz accesible e inclusiva para todo tipo de usuarios.
+    • Juegos y minijuegos con temáticas de sostenibilidad, educación ambiental y social.
+    • Secciones para educadores con recursos didácticos.
+    • Comunidad participativa con foros y sistema de feedback.
+    • Tecnología optimizada para reducir consumo energético (hosting verde, código eficiente).
+    • Multilenguaje para ampliar el alcance internacional.
+La aplicación es 100% online, compatible con navegadores modernos y dispositivos móviles.
+
+2. Gráfico y explicación del Ciclo de Vida tecnológico de la aplicación/página web
+Ciclo de Vida típico tecnológico (adaptado):
+Tiempo (meses)
+|--------|-------------|-------------|--------------|---->
+0        6            18            30             42
+
+Etapas:  Desarrollo → Lanzamiento → Crecimiento → Madurez → Declive
+    • Desarrollo (0 - 6 meses): Diseño, programación, pruebas internas, creación de contenido educativo y optimización tecnológica.
+    • Lanzamiento (6 - 12 meses): Publicación oficial, primeras campañas de marketing, incorporación de feedback inicial.
+    • Crecimiento (12 - 30 meses): Expansión de usuarios, actualización constante de juegos, mejora en funcionalidades, ampliación de idiomas.
+    • Madurez (30 - 42 meses): Estabilización del número de usuarios, optimización de recursos, monetización máxima y fidelización.
+    • Declive (a partir de 42 meses): Disminución de usuarios por nuevas tecnologías o cambios de mercado, evaluación para pivote o renovación.
+
+3. Precio de Venta (PVP) detallado
+El modelo de ingresos para la aplicación/página web puede ser mixto, basado en:
+Concepto	Precio Unitario / Mensual	Detalle
+Acceso básico (gratis)	Gratis	Acceso a juegos básicos y comunidad
+Suscripción premium	7 € / mes	Acceso a todos los juegos, contenidos exclusivos, sin anuncios, soporte prioritario
+Compra de DLC (expansiones)	3-5 € por paquete	Contenido adicional educativo o temático
+Venta de merchandising digital	5-20 € por ítem	Avatares, skins o recursos digitales para personalización
+Licencias para centros educativos	300 € / año por institución	Acceso multiusuario con herramientas didácticas
+Justificación del PVP:
+    • La suscripción mensual ofrece un modelo recurrente para mantener ingresos sostenibles y financiar actualizaciones.
+    • Los DLC y merchandising permiten monetizar contenido extra y personalización sin afectar el acceso base.
+    • La licencia educativa asegura impacto social y una fuente de ingresos sólida.
+Análisis DAFO
+	Empresa de desarrollo de videojuegos	Página web / Aplicación
+Fortalezas	- Equipo creativo y multidisciplinar	- Plataforma accesible e inclusiva
+	- Enfoque en sostenibilidad y responsabilidad social	- Contenidos educativos y temáticos de impacto
+	- Alianzas estratégicas con ONG y centros educativos	- Hosting verde y optimización energética
+	- Experiencia técnica en desarrollo de videojuegos indie	- Comunidad participativa y sistema de feedback
+		- Multilenguaje y compatible con dispositivos móviles
+		
+Debilidades	- Recursos limitados frente a grandes estudios	- Funcionalidades limitadas en versiones iniciales
+	- Dependencia del nicho educativo y sostenible	- Necesidad constante de actualización para mantener interés
+	- Escalabilidad limitada inicialmente	- Posible curva de aprendizaje para nuevos usuarios
+		
+Oportunidades	- Creciente demanda de juegos educativos y sostenibles	- Crecimiento del mercado de juegos indie y educativos
+	- Apoyo y subvenciones para proyectos sostenibles y culturales	- Integración con nuevas tecnologías (AR, VR)
+	- Expansión internacional gracias a multilenguaje	- Colaboraciones con instituciones educativas y ONGs
+	- Creciente conciencia ambiental de los consumidores	- Monetización vía suscripciones y contenido adicional
+		
+Amenazas	- Competencia de grandes estudios y plataformas consolidadas	- Cambios rápidos en tendencias tecnológicas y preferencias
+	- Cambios regulatorios o normativos en el sector digital	- Riesgo de fallos técnicos o problemas de seguridad
+	- Dificultad para captar usuarios en mercados saturados	- Dependencia de terceros para hosting y distribución
+
+1. Organigrama
+                 Director General + Programador Backend
+                               │
+                  ┌────────────┴────────────┐
+                  │                         │
+Programador Frontend + Diseñador UI/UX       DevOps + QA/Testers
+
+					(3 empleados)
+Roles y responsabilidades:
+Dado que somos un pequeño equipo de desarrolladores independientes, los 3 empleados cubrirán varias áreas de trabajo de forma colaborativa y flexible:
+    • Empleado 1: Director General + Programador Backend
+        ◦ Liderazgo y coordinación general.
+        ◦ Desarrollo y mantenimiento del servidor, base de datos y lógica del backend.
+    • Empleado 2: Programador Frontend + Diseñador UI/UX
+        ◦ Desarrollo de la interfaz de usuario y experiencia.
+        ◦ Diseño gráfico y elementos multimedia para la página web y juegos.
+    • Empleado 3: DevOps + QA/Testers
+        ◦ Gestión de infraestructura, hosting (optimización energética).
+        ◦ Pruebas de calidad, control de bugs y soporte técnico.
+
+2. Personal contratado y costes salariales
+Puesto combinado	Nº empleados	Salario bruto mensual (€)	Coste bruto anual (€)
+Director General / Backend	1	3.500	42.000
+Frontend / UI-UX Designer	1	3.000	36.000
+DevOps / QA Tester	1	2.800	33.600
+Total empleados: 3
+Coste salarial bruto anual aproximado: 111.600 €
+
+3. Convenio colectivo aplicable
+    • Convenio:
+Convenio Colectivo Estatal de Empresas de Consultoría y Estudios de Mercado y de la Opinión Pública.
+    • Código:
+99000285011981.
+    • Publicación:
+BOE nº 145, 17 de junio de 2019.
+    • Notas:
+Aunque somos un equipo pequeño, seguimos sujetos a este convenio que regula las condiciones laborales del sector, incluyendo salarios, jornada y derechos.
+
+Plan de Marketing / Publicidad
+
+1. Producto o servicio a publicitar
+La campaña publicitaria se centrará en promocionar la plataforma web de videojuegos educativos y sostenibles, destacando:
+    • Juegos interactivos con contenido educativo sobre sostenibilidad y medio ambiente.
+    • Plataforma accesible e inclusiva, con experiencia de usuario optimizada.
+    • Comunidad activa y participativa con feedback constante.
+    • Uso de tecnología responsable con el medio ambiente (hosting verde).
+    • Suscripción premium con contenido exclusivo y sin anuncios.
+
+2. Precio de la campaña publicitaria
+Concepto	Detalle	Coste estimado (€)
+Publicidad digital	Anuncios en redes sociales (Facebook, Instagram, TikTok) y Google Ads	2.000 / mes
+Creación de contenido	Producción de vídeos, banners, posts, newsletters	1.000 (único)
+Influencers y colaboraciones	Microinfluencers del sector educativo y gaming	1.500 (campaña puntual)
+SEO y SEM	Optimización de la web para buscadores y campañas de pago por clic	800 / mes
+Eventos y webinars	Organización de eventos online y demostraciones	700 (por evento)
+Presupuesto total estimado inicial (3 meses): 13.500 € aproximadamente
+
+3. Merchandising
+El merchandising se enfocará en artículos digitales y físicos que refuercen la marca y fidelicen usuarios:
+    • Merchandising digital:
+        ◦ Avatares personalizados y skins para juegos (5-20 €).
+        ◦ Packs de recursos educativos descargables.
+    • Merchandising físico:
+        ◦ Camisetas, tazas y stickers con la imagen de la plataforma y mensajes sostenibles.
+        ◦ Packs promocionales para eventos y colaboraciones.
+El merchandising servirá como fuente de ingresos adicional y herramienta de marketing viral.
+
+4. Promoción de ventas y tipo de fidelización de clientes
+Promociones de ventas:
+    • Periodo de prueba gratuito de 14 días para suscripción premium.
+    • Descuentos por lanzamiento y ofertas especiales para centros educativos.
+    • Pack familiar con precios especiales para suscripciones múltiples.
+Estrategias de fidelización:
+    • Programa de recompensas: puntos por uso activo, feedback y participación en la comunidad, canjeables por contenido exclusivo o merchandising.
+    • Newsletter personalizada con novedades, consejos educativos y contenido exclusivo para suscriptores.
+    • Atención al cliente prioritario para usuarios premium.
+    • Actualizaciones periódicas y contenido nuevo basado en las sugerencias de la comunidad.
+
+Plan de Prevención de Riesgos Laborales (PPRL)
+1. Identificación de riesgos principales
+    • Riesgos ergonómicos: Posturas prolongadas frente a pantallas, movimientos repetitivos, mala posición de sillas y mesas.
+    • Riesgos eléctricos: Uso de ordenadores, cables y dispositivos conectados.
+    • Riesgos de incendio: Equipos electrónicos, cables, tomas de corriente y mobiliario.
+    • Riesgos psicosociales: Estrés por carga de trabajo o ambiente laboral.
+    • Riesgos derivados del espacio reducido: Movilidad limitada, posibles obstrucciones en vías de evacuación.
+2. Medidas preventivas
+    • Ergonómicas:
+        ◦ Sillas ajustables con soporte lumbar.
+        ◦ Mesas con altura adecuada.
+        ◦ Pausas activas cada hora para evitar fatiga muscular.
+        ◦ Formación sobre posturas y uso adecuado del equipo.
+    • Eléctricas:
+        ◦ Revisiones periódicas de cables y enchufes.
+        ◦ Evitar sobrecarga de tomas de corriente.
+        ◦ Uso de regletas con protección.
+    • Incendios:
+        ◦ Instalación de extintores en lugar visible.
+        ◦ Detectores de humo instalados.
+        ◦ Formación en uso de extintores y protocolos de evacuación.
+        ◦ Vías de evacuación libres de obstáculos.
+    • Psicosociales:
+        ◦ Fomentar comunicación abierta y gestión del estrés.
+        ◦ Flexibilidad horaria y posibilidad de teletrabajo.
+    • Orden y limpieza:
+        ◦ Mantener el espacio ordenado para evitar tropiezos.
+        ◦ Recogida y reciclaje de residuos electrónicos y papel.
+3. Procedimientos de actuación ante emergencias
+    • En caso de incendio, activar alarma, usar extintores si es posible y evacuar por la salida señalizada.
+    • No utilizar ascensores (en caso de edificios con más plantas).
+    • Punto de encuentro fuera del local para recuento de personal.
+    • Comunicación inmediata con servicios de emergencia (112).w

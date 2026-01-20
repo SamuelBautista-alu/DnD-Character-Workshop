@@ -1,0 +1,51 @@
+
+Guion para proyecto final DAW
+
+1. Introducción
+Una introducción bien redactada debe permitir que cualquier persona que lea el proyecto
+comprenda perfectamente en qué consiste, sin necesidad de tener un gran conocimiento
+técnico.
+Debes explicar la motivación del proyecto, profundizando en aspectos como:
+• ¿Cuál es el problema que se necesita resolver?
+• ¿Qué solución se ha planteado?
+El objetivo es presentar el proyecto de forma atractiva, por ejemplo:
+"Esta aplicación nace de la creciente necesidad de los comercios locales por adaptarse
+a los cambios...Con esta aplicación podrán…"
+
+2. Descripción del proyecto y objetivos
+En este apartado debes describir en qué consiste el proyecto, qué se ha desarrollado y
+cuáles son los objetivos a cumplir.
+Es importante recordar que aquí solo se debe hacer un resumen general. Los detalles
+técnicos y explicaciones extensas se desarrollarán en el Cuerpo del proyecto.
+Si el proyecto se realiza en una empresa, es recomendable incluir una breve descripción
+de la misma y explicar de manera concisa cómo se va a llevar a cabo el desarrollo dentro
+de ese entorno.
+
+3. Cuerpo del proyecto
+Este es el apartado más técnico y detallado de la memoria. Aquí puedes incluir capturas
+de pantalla, fragmentos de código o cualquier otro material que ayude a explicar lo que
+has hecho y cómo lo has desarrollado.
+Puedes organizar esta sección según las necesidades del proyecto. Sin embargo, en
+términos generales, debería incluir los siguientes apartados:
+
+3.1. Organización del proyecto
+Explica cómo has planificado y estructurado el trabajo, incluyendo:
+• Definición de requisitos y funcionalidades.
+• Arquitectura de la aplicación.
+• Diseño de la interfaz de usuario.
+• Elección de tecnologías, lenguajes de programación y librerías utilizadas.
+3.2. Desarrollo de la aplicación
+En este apartado debes detallar todo el trabajo realizado, incluyendo:
+• Implementación de la base de datos y el backend.
+• Desarrollo de las funcionalidades principales.
+• Pruebas y depuración.
+
+4. Conclusión
+Aunque a veces se le da menos importancia, la conclusión es una parte fundamental del
+proyecto. Aquí debes reflexionar sobre los siguientes aspectos:
+• Resultados obtenidos: ¿La aplicación ha cumplido con los objetivos planteados?
+• Dificultades encontradas durante el desarrollo.
+• Propuestas de mejora: aspectos que se intentaron implementar pero no se
+completaron por su dificultad o falta de tiempo, así como posibles mejoras futuras.
+• Relación del proyecto con lo aprendido durante el ciclo formativo.
+• Valoración personal y autocrítica sobre el trabajo realizado
