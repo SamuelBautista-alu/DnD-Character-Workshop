@@ -9,8 +9,8 @@ export default function LoginPage() {
   const { language } = useLanguageStore();
   const t = (key: string) => getTranslation(language, key);
   const { login, isLoading, error, clearError } = useAuthStore();
-  const [email, setEmail] = useState("test@example.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
