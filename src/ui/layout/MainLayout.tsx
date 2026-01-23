@@ -212,7 +212,7 @@ export default function MainLayout({
                 (e.currentTarget.style.backgroundColor = "transparent")
               }
             >
-              <span className="flex-shrink-0">{navIcons[link.href]}</span>
+              <span className="shrink-0">{navIcons[link.href]}</span>
               <span>{link.label}</span>
             </a>
           ))}

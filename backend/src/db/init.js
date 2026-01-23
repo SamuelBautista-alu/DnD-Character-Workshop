@@ -1,4 +1,8 @@
 import sequelize from "./database.js";
+import User from "../models/User.js";
+import Character from "../models/Character.js";
+import Note from "../models/Note.js";
+import Homebrew from "../models/Homebrew.js";
 
 // Initialize models (will be populated as we create models)
 export async function initializeDatabase() {

@@ -24,9 +24,13 @@ if (process.env.USE_IN_MEMORY === "true") {
   const useSqlite = process.env.USE_SQLITE !== "false";
 
   if (useSqlite) {
+    // Use separate databases for development and testing
+    const dbName = config.NODE_ENV === "test" ? "./test.sqlite" : "./dev.sqlite";
+    const storagePath = process.env.SQLITE_STORAGE || dbName;
+    
     sequelize = new Sequelize({
       dialect: "sqlite",
-      storage: process.env.SQLITE_STORAGE || "./dev.sqlite",
+      storage: storagePath,
       logging: config.NODE_ENV === "development" ? console.log : false,
     });
   } else {

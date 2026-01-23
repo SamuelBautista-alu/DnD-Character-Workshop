@@ -8,6 +8,7 @@ import characterRoutes from "./routes/characterRoutes.js";
 import gameModeRoutes from "./routes/gameModeRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import noteRoutes from "./routes/noteRoutes.js";
+import homebrewRoutes from "./routes/homebrewRoutes.js";
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(`${config.API_PREFIX}/characters`, characterRoutes);
 app.use(`${config.API_PREFIX}/gamemode`, gameModeRoutes);
 app.use(`${config.API_PREFIX}/users`, userRoutes);
 app.use(`${config.API_PREFIX}/notes`, noteRoutes);
+app.use(`${config.API_PREFIX}/homebrew`, homebrewRoutes);
 
 // Endpoint de documentación de la API
 app.get(`${config.API_PREFIX}`, (req, res) => {
@@ -48,6 +50,8 @@ app.get(`${config.API_PREFIX}`, (req, res) => {
       characters: `${config.API_PREFIX}/characters`,
       gamemode: `${config.API_PREFIX}/gamemode`,
       users: `${config.API_PREFIX}/users`,
+      notes: `${config.API_PREFIX}/notes`,
+      homebrew: `${config.API_PREFIX}/homebrew`,
     },
   });
 });
