@@ -231,7 +231,7 @@ export default function GameDashboard() {
             }
           />
         </div>
-        <div className="min-h-[300px]">
+        <div className="min-h-75">
           <InventoryBox
             items={currentCharacter.inventory || []}
             carrying_capacity={Math.floor(currentCharacter.strength * 15)}

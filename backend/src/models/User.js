@@ -20,9 +20,6 @@ const User = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     passwordHash: {
       type: DataTypes.STRING(255),
@@ -32,7 +29,7 @@ const User = sequelize.define(
   {
     tableName: "Users",
     timestamps: true,
-  }
+  },
 );
 
 export default User;
