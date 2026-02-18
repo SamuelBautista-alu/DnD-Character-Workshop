@@ -36,7 +36,7 @@ export default function SpellsList({
           No hay hechizos.
         </div>
       ) : (
-        <div className="space-y-2 overflow-y-auto flex-1 max-h-[calc(100vh-400px)] min-h-[300px]">
+        <div className="space-y-2 overflow-y-auto flex-1 max-h-[calc(100vh-400px)] min-h-75">
           {localSpells.map((spell, i) => (
             <div
               key={`${spell.name}-${i}`}

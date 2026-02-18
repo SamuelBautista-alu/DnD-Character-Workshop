@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="mb-12">
-        <div className="relative bg-gradient-to-r from-burgundy-dark to-burgundy-light rounded-lg p-12 text-white shadow-lg overflow-hidden">
+        <div className="relative bg-linear-to-r from-burgundy-dark to-burgundy-light rounded-lg p-12 text-white shadow-lg overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-48 -mt-48"></div>
           <div className="relative z-10">
             <h1
