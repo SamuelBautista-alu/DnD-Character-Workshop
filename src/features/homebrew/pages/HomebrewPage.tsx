@@ -161,11 +161,11 @@ export default function HomebrewPage() {
   };
 
   const tabs: Array<{ id: TabType; label: string; icon: string }> = [
-    { id: "classes", label: "Classes", icon: "⚔️" },
-    { id: "races", label: "Races", icon: "🧝" },
-    { id: "spells", label: "Spells", icon: "✨" },
-    { id: "items", label: "Items", icon: "🎒" },
-    { id: "backgrounds", label: "Backgrounds", icon: "📖" },
+    { id: "classes", label: t("homebrew.classes"), icon: "⚔️" },
+    { id: "races", label: t("homebrew.races"), icon: "🧝" },
+    { id: "spells", label: t("homebrew.spells"), icon: "✨" },
+    { id: "items", label: t("homebrew.items"), icon: "🎒" },
+    { id: "backgrounds", label: t("homebrew.backgrounds"), icon: "📖" },
   ];
 
   return (
@@ -230,13 +230,16 @@ export default function HomebrewPage() {
               color: "var(--accent-foreground)",
             }}
           >
-            Create New
+            {t("homebrew.page.createNew")}
           </button>
 
           {/* Search Input */}
           <input
             type="text"
-            placeholder={`Search ${activeTab}...`}
+            placeholder={t("homebrew.page.searchPlaceholder").replace(
+              "{type}",
+              activeTab,
+            )}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
@@ -252,7 +255,9 @@ export default function HomebrewPage() {
 
         {/* Content Grid */}
         {isLoading ? (
-          <div style={{ color: "var(--muted-foreground)" }}>Loading...</div>
+          <div style={{ color: "var(--muted-foreground)" }}>
+            {t("homebrew.page.loading")}
+          </div>
         ) : content.length === 0 ? (
           <div
             className="text-center py-12"
@@ -260,8 +265,11 @@ export default function HomebrewPage() {
           >
             <p className="text-lg">
               {searchQuery
-                ? "No results found"
-                : `No ${activeTab} created yet. Create your first one!`}
+                ? t("homebrew.page.noResults")
+                : t("homebrew.noContent").replaceAll(
+                    "{type}",
+                    getContentTypeFromTab(activeTab),
+                  )}
             </p>
           </div>
         ) : (
@@ -296,7 +304,7 @@ export default function HomebrewPage() {
                       color: "var(--primary-foreground)",
                     }}
                   >
-                    Edit
+                    {t("homebrew.page.edit")}
                   </button>
                   <button
                     onClick={() => handleDeleteClick(item.id)}
@@ -306,7 +314,7 @@ export default function HomebrewPage() {
                       color: "var(--destructive-foreground)",
                     }}
                   >
-                    Delete
+                    {t("homebrew.page.delete")}
                   </button>
                 </div>
               </div>
@@ -377,10 +385,13 @@ export default function HomebrewPage() {
 
         <ConfirmDialog
           isOpen={showDeleteConfirm}
-          title="Delete Item"
-          message={`Are you sure you want to delete "${deleteTarget?.id || ""}"? This action cannot be undone.`}
-          confirmText="Delete"
-          cancelText="Cancel"
+          title={t("homebrew.deleteTitle")}
+          message={t("homebrew.deleteMessage").replace(
+            "{name}",
+            deleteTarget?.id || "",
+          )}
+          confirmText={t("homebrew.confirmDelete")}
+          cancelText={t("homebrew.confirmCancel")}
           isDangerous={true}
           isLoading={isLoading}
           onConfirm={handleConfirmDelete}

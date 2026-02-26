@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store";
+import { useLanguageStore } from "../../language/store";
+import { getTranslation } from "@/lib/i18n";
 
 export default function RegistrationPage() {
   const navigate = useNavigate();
   const { register, isLoading, error, clearError } = useAuthStore();
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,27 +23,27 @@ export default function RegistrationPage() {
 
     // Validation
     if (!username.trim()) {
-      setValidationError("Username is required");
+      setValidationError(t("auth.register.usernameRequired"));
       return;
     }
     if (username.length < 3) {
-      setValidationError("Username must be at least 3 characters");
+      setValidationError(t("auth.register.usernameMinLength"));
       return;
     }
     if (!email.trim()) {
-      setValidationError("Email is required");
+      setValidationError(t("auth.register.emailRequired"));
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setValidationError("Please enter a valid email address");
+      setValidationError(t("auth.register.emailInvalid"));
       return;
     }
     if (password.length < 6) {
-      setValidationError("Password must be at least 6 characters");
+      setValidationError(t("auth.register.passwordMinLength"));
       return;
     }
     if (password !== confirmPassword) {
-      setValidationError("Passwords do not match");
+      setValidationError(t("auth.register.passwordMismatch"));
       return;
     }
 
@@ -53,7 +57,7 @@ export default function RegistrationPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
+      className="flex items-center justify-center p-4"
       style={{ backgroundColor: "var(--background)" }}
     >
       <div
@@ -68,7 +72,7 @@ export default function RegistrationPage() {
           className="text-2xl font-bold mb-6 text-center"
           style={{ color: "var(--foreground)" }}
         >
-          Create Account
+          {t("auth.register.title")}
         </h2>
 
         {(error || validationError) && (
@@ -90,7 +94,7 @@ export default function RegistrationPage() {
               className="block font-semibold mb-2"
               style={{ color: "var(--foreground)" }}
             >
-              Username
+              {t("auth.register.username")}
             </label>
             <input
               type="text"
@@ -102,7 +106,7 @@ export default function RegistrationPage() {
                 color: "var(--foreground)",
                 border: "1px solid var(--border)",
               }}
-              placeholder="Choose a username"
+              placeholder={t("auth.register.usernamePlaceholder")}
               required
               disabled={isLoading}
               onFocus={(e) =>
@@ -117,7 +121,7 @@ export default function RegistrationPage() {
               className="block font-semibold mb-2"
               style={{ color: "var(--foreground)" }}
             >
-              Email
+              {t("auth.register.email")}
             </label>
             <input
               type="email"
@@ -129,7 +133,7 @@ export default function RegistrationPage() {
                 color: "var(--foreground)",
                 border: "1px solid var(--border)",
               }}
-              placeholder="your@email.com"
+              placeholder={t("auth.register.emailPlaceholder")}
               required
               disabled={isLoading}
               onFocus={(e) =>
@@ -144,7 +148,7 @@ export default function RegistrationPage() {
               className="block font-semibold mb-2"
               style={{ color: "var(--foreground)" }}
             >
-              Password
+              {t("auth.register.password")}
             </label>
             <div className="relative">
               <input
@@ -176,7 +180,9 @@ export default function RegistrationPage() {
                 }}
                 disabled={isLoading}
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword
+                  ? t("auth.register.hidePassword")
+                  : t("auth.register.showPassword")}
               </button>
             </div>
           </div>
@@ -186,7 +192,7 @@ export default function RegistrationPage() {
               className="block font-semibold mb-2"
               style={{ color: "var(--foreground)" }}
             >
-              Confirm Password
+              {t("auth.register.confirmPassword")}
             </label>
             <input
               type={showPassword ? "text" : "password"}
@@ -217,7 +223,7 @@ export default function RegistrationPage() {
             }}
             disabled={isLoading}
           >
-            {isLoading ? "Creating account..." : "Sign Up"}
+            {isLoading ? t("auth.register.loading") : t("auth.register.signUp")}
           </button>
         </form>
 
@@ -225,13 +231,26 @@ export default function RegistrationPage() {
           className="text-center mt-6"
           style={{ color: "var(--muted-foreground)" }}
         >
-          Already have an account?{" "}
+          {t("auth.register.haveAccount")}{" "}
           <a
             href="/login"
             className="font-semibold hover:underline transition-all"
             style={{ color: "var(--primary)" }}
           >
-            Sign In
+            {t("auth.register.signIn")}
+          </a>
+        </p>
+
+        <p
+          className="text-center mt-4"
+          style={{ color: "var(--muted-foreground)" }}
+        >
+          <a
+            href="/forgot-password"
+            className="font-semibold hover:underline transition-all"
+            style={{ color: "var(--primary)" }}
+          >
+            {t("auth.register.forgotPassword")}
           </a>
         </p>
       </div>

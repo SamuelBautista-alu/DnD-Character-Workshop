@@ -28,6 +28,8 @@ import NotesPage from "@/features/notes/pages/NotesPage";
 import ProfilePage from "@/features/profile/pages/ProfilePage";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import RegistrationPage from "@/features/auth/pages/RegistrationPage";
+import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 /**
@@ -126,6 +128,22 @@ const createRoutes = () => [
         element: (
           <PublicRoute>
             <RegistrationPage />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/forgot-password",
+        element: (
+          <PublicRoute>
+            <ForgotPasswordPage />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/reset-password",
+        element: (
+          <PublicRoute>
+            <ResetPasswordPage />
           </PublicRoute>
         ),
       },

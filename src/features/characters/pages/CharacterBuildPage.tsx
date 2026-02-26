@@ -4,6 +4,7 @@ import useAuthStore from "@/features/auth/store";
 import { useLanguageStore } from "@/features/language/store";
 import { getTranslation } from "@/lib/i18n";
 import useCharacterStore from "../store";
+import useHomebrewStore from "@/features/homebrew/store";
 import { Character, InventoryItem, Spell } from "../store";
 import { getBackgroundOptions, getBackground } from "@/rules/backgrounds";
 import { RULES_2014, RULES_2024 } from "@/rules";
@@ -185,6 +186,12 @@ export default function CharacterBuildPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { token } = useAuthStore();
+  const {
+    fetchAll,
+    classes: homebrewClasses,
+    races: homebrewRaces,
+    backgrounds: homebrewBackgrounds,
+  } = useHomebrewStore();
   const { language } = useLanguageStore();
   const t = (key: string) => getTranslation(language as "en" | "es", key);
   const {
@@ -221,6 +228,38 @@ export default function CharacterBuildPage() {
       fetchCharacter(parseInt(id), token);
     }
   }, [id, token, fetchCharacter]);
+
+  useEffect(() => {
+    if (!token) return;
+    fetchAll(token);
+  }, [token, fetchAll]);
+
+  const availableClasses = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_CLASSES, ...homebrewClasses.map((item) => item.name)]),
+      ),
+    [homebrewClasses],
+  );
+
+  const availableRaces = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_RACES, ...homebrewRaces.map((item) => item.name)]),
+      ),
+    [homebrewRaces],
+  );
+
+  const backgroundOptions = useMemo(
+    () => [
+      ...getBackgroundOptions(),
+      ...homebrewBackgrounds.map((bg) => ({
+        id: String(bg.id),
+        name: `${bg.name} (Custom)`,
+      })),
+    ],
+    [homebrewBackgrounds],
+  );
 
   useEffect(() => {
     if (currentCharacter) {
@@ -634,7 +673,12 @@ export default function CharacterBuildPage() {
           }}
         >
           {activeTab === "background" && (
-            <BackgroundTab formData={formData} handleChange={handleChange} />
+            <BackgroundTab
+              formData={formData}
+              handleChange={handleChange}
+              availableRaces={availableRaces}
+              backgroundOptions={backgroundOptions}
+            />
           )}
           {activeTab === "abilities" && (
             <AbilitiesTab
@@ -853,6 +897,8 @@ export default function CharacterBuildPage() {
 function BackgroundTab({
   formData,
   handleChange,
+  availableRaces = [],
+  backgroundOptions = [],
 }: {
   formData: Partial<Character>;
   handleChange: (
@@ -860,6 +906,8 @@ function BackgroundTab({
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >,
   ) => void;
+  availableRaces: string[];
+  backgroundOptions: { id: string; name: string }[];
 }) {
   return (
     <div>
@@ -928,7 +976,7 @@ function BackgroundTab({
               color: "var(--foreground)",
             }}
           >
-            {D20_RACES.map((race) => (
+            {availableRaces.map((race) => (
               <option key={race} value={race}>
                 {race}
               </option>
@@ -963,7 +1011,7 @@ function BackgroundTab({
             }}
           >
             <option value="">Select a background...</option>
-            {getBackgroundOptions().map((bg) => (
+            {backgroundOptions.map((bg) => (
               <option key={bg.id} value={bg.id}>
                 {bg.name}
               </option>
@@ -1493,7 +1541,7 @@ function ClassesTab({
               }}
             >
               <option value="">Select a class...</option>
-              {D20_CLASSES.map((cls) => (
+              {availableClasses.map((cls) => (
                 <option key={cls} value={cls}>
                   {cls}
                 </option>

@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 import ClassForm from "./ClassForm";
 import RaceForm from "./RaceForm";
 import SpellForm from "./SpellForm";
@@ -75,6 +77,10 @@ export default function HomebrewModal({
   onItemSubmit,
   onBackgroundSubmit,
 }: HomebrewModalProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+  const [error, setError] = useState<string | null>(null);
+
   // Close modal on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -86,31 +92,59 @@ export default function HomebrewModal({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
+  // Clear error when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setError(null);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
-  const title = isEditing
-    ? EDIT_TITLES[contentType]
-    : CONTENT_TITLES[contentType];
+  const getTitleKey = (): string => {
+    const typeKey =
+      contentType === "class"
+        ? "class"
+        : contentType === "race"
+          ? "race"
+          : contentType === "spell"
+            ? "spell"
+            : contentType === "item"
+              ? "item"
+              : "background";
+    return isEditing
+      ? `homebrew.modal.${typeKey}EditTitle`
+      : `homebrew.modal.${typeKey}Title`;
+  };
+
+  const title = t(getTitleKey());
 
   const handleFormSubmit = async (data: any) => {
-    switch (contentType) {
-      case "class":
-        await onClassSubmit(data);
-        break;
-      case "race":
-        await onRaceSubmit(data);
-        break;
-      case "spell":
-        await onSpellSubmit(data);
-        break;
-      case "item":
-        await onItemSubmit(data);
-        break;
-      case "background":
-        await onBackgroundSubmit(data);
-        break;
+    try {
+      setError(null);
+      switch (contentType) {
+        case "class":
+          await onClassSubmit(data);
+          break;
+        case "race":
+          await onRaceSubmit(data);
+          break;
+        case "spell":
+          await onSpellSubmit(data);
+          break;
+        case "item":
+          await onItemSubmit(data);
+          break;
+        case "background":
+          await onBackgroundSubmit(data);
+          break;
+      }
+      onClose();
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "An error occurred";
+      setError(errorMessage);
     }
-    onClose();
   };
 
   return (
@@ -146,6 +180,14 @@ export default function HomebrewModal({
 
         {/* Content */}
         <div className="p-6 max-h-[calc(90vh-120px)] overflow-y-auto">
+          {error && (
+            <div
+              className="mb-4 p-3 rounded"
+              style={{ backgroundColor: "#fde2e2", color: "#8b2635" }}
+            >
+              {error}
+            </div>
+          )}
           {contentType === "class" && (
             <ClassForm
               onSubmit={handleFormSubmit}

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/features/auth/store";
 import useCharacterStore, { Character } from "../store";
+import useHomebrewStore from "@/features/homebrew/store";
 import { getBackgroundOptions } from "@/rules/backgrounds";
 import { getAbilityModifier } from "@/rules/skillAbilityMap";
 import { useLanguageStore } from "@/features/language/store";
@@ -40,8 +41,46 @@ export default function CharacterCreatePage() {
   const navigate = useNavigate();
   const { token } = useAuthStore();
   const { createCharacter, isLoading, error } = useCharacterStore();
+  const {
+    fetchAll,
+    classes: homebrewClasses,
+    races: homebrewRaces,
+    backgrounds: homebrewBackgrounds,
+  } = useHomebrewStore();
   const { language } = useLanguageStore();
   const t = (key: string) => getTranslation(language, key);
+
+  useEffect(() => {
+    if (!token) return;
+    fetchAll(token);
+  }, [token, fetchAll]);
+
+  const availableClasses = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_CLASSES, ...homebrewClasses.map((item) => item.name)]),
+      ),
+    [homebrewClasses],
+  );
+
+  const availableRaces = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_RACES, ...homebrewRaces.map((item) => item.name)]),
+      ),
+    [homebrewRaces],
+  );
+
+  const backgroundOptions = useMemo(
+    () => [
+      ...getBackgroundOptions(),
+      ...homebrewBackgrounds.map((bg) => ({
+        id: String(bg.id),
+        name: `${bg.name} (Custom)`,
+      })),
+    ],
+    [homebrewBackgrounds],
+  );
 
   const [activeTab, setActiveTab] = useState<TabType>("background");
   const [formData, setFormData] = useState({
@@ -283,7 +322,7 @@ export default function CharacterCreatePage() {
                       color: "var(--foreground)",
                     }}
                   >
-                    {D20_RACES.map((race) => (
+                    {availableRaces.map((race) => (
                       <option key={race} value={race}>
                         {race}
                       </option>
@@ -319,7 +358,7 @@ export default function CharacterCreatePage() {
                     <option value="">
                       {t("characterCreation.backgroundPlaceholder")}
                     </option>
-                    {getBackgroundOptions().map((bg) => (
+                    {backgroundOptions.map((bg) => (
                       <option key={bg.id} value={bg.id}>
                         {bg.name}
                       </option>
@@ -526,7 +565,7 @@ export default function CharacterCreatePage() {
                       color: "var(--foreground)",
                     }}
                   >
-                    {D20_CLASSES.map((cls) => (
+                    {availableClasses.map((cls) => (
                       <option key={cls} value={cls}>
                         {cls}
                       </option>

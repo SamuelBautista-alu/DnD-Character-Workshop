@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
+import useHomebrewStore from "@/features/homebrew/store";
 import { Character, InventoryItem } from "../store";
 
 interface ItemsTabProps {
@@ -11,11 +12,11 @@ interface ItemsTabProps {
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => void;
   onInventoryChange?: (
     inventory: InventoryItem[],
-    currentWeight: number
+    currentWeight: number,
   ) => void;
 }
 
@@ -26,15 +27,17 @@ export default function ItemsTab({
 }: ItemsTabProps) {
   // Estado local para inventario
   const [items, setItems] = useState<InventoryItem[]>(
-    (formData as any)?.inventory || []
+    (formData as any)?.inventory || [],
   );
+  const [selectedHomebrewItemId, setSelectedHomebrewItemId] = useState("");
+  const homebrewItems = useHomebrewStore((state) => state.items);
 
   // Sincronizar con formData cuando cambia el inventario
   useEffect(() => {
     // Calcular y sincronizar el peso actual
     const totalWeight = items.reduce(
       (sum, item) => sum + (item.weight || 0) * item.quantity,
-      0
+      0,
     );
 
     // Notificar al padre del cambio
@@ -50,7 +53,7 @@ export default function ItemsTab({
   const carryingCapacity = strModifier * 15;
   const totalWeight = items.reduce(
     (sum, item) => sum + (item.weight || 0) * item.quantity,
-    0
+    0,
   );
   const isOverencumbered = totalWeight > carryingCapacity;
 
@@ -70,14 +73,33 @@ export default function ItemsTab({
     setItems(items.filter((item) => item.id !== id));
   };
 
+  const addHomebrewItem = () => {
+    const item = homebrewItems.find((i) => i.id === selectedHomebrewItemId);
+    if (!item) return;
+
+    const newItem: InventoryItem = {
+      id: `item-${Date.now()}`,
+      name: item.name,
+      quantity: 1,
+      weight: 0,
+      equipped: false,
+      notes: item.description,
+    };
+
+    setItems([...items, newItem]);
+    setSelectedHomebrewItemId("");
+  };
+
   const updateItem = (
     id: string | undefined,
     field: keyof InventoryItem,
-    value: any
+    value: any,
   ) => {
     if (!id) return;
     setItems(
-      items.map((item) => (item.id === id ? { ...item, [field]: value } : item))
+      items.map((item) =>
+        item.id === id ? { ...item, [field]: value } : item,
+      ),
     );
   };
 
@@ -138,15 +160,15 @@ export default function ItemsTab({
             style={{
               width: `${Math.min(
                 (totalWeight / carryingCapacity) * 100,
-                100
+                100,
               )}%`,
               height: "100%",
               backgroundColor:
                 totalWeight <= carryingCapacity * 0.75
                   ? "#5cb85c"
                   : totalWeight <= carryingCapacity
-                  ? "#f0ad4e"
-                  : "#d9534f",
+                    ? "#f0ad4e"
+                    : "#d9534f",
               transition: "width 0.2s ease",
             }}
           />
@@ -259,7 +281,7 @@ export default function ItemsTab({
                       updateItem(
                         item.id,
                         "quantity",
-                        parseInt(e.target.value) || 1
+                        parseInt(e.target.value) || 1,
                       )
                     }
                     min="1"
@@ -300,7 +322,7 @@ export default function ItemsTab({
                       updateItem(
                         item.id,
                         "weight",
-                        parseFloat(e.target.value) || 0
+                        parseFloat(e.target.value) || 0,
                       )
                     }
                     placeholder="0"
@@ -433,6 +455,57 @@ export default function ItemsTab({
           </div>
         )}
       </div>
+
+      {homebrewItems.length > 0 && (
+        <div
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            marginBottom: "1rem",
+            alignItems: "center",
+          }}
+        >
+          <select
+            value={selectedHomebrewItemId}
+            onChange={(e) => setSelectedHomebrewItemId(e.target.value)}
+            style={{
+              flex: 1,
+              padding: "0.75rem 1rem",
+              border: "1px solid var(--border)",
+              borderRadius: "0.375rem",
+              backgroundColor: "var(--input-background)",
+              color: "var(--foreground)",
+            }}
+          >
+            <option value="">Añadir objeto homebrew...</option>
+            {homebrewItems.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={addHomebrewItem}
+            disabled={!selectedHomebrewItemId}
+            style={{
+              padding: "0.75rem 1rem",
+              backgroundColor: selectedHomebrewItemId
+                ? "var(--primary)"
+                : "var(--border)",
+              color: selectedHomebrewItemId
+                ? "var(--primary-foreground)"
+                : "var(--muted-foreground)",
+              border: "none",
+              borderRadius: "0.375rem",
+              cursor: selectedHomebrewItemId ? "pointer" : "not-allowed",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+            }}
+          >
+            + Añadir objeto homebrew
+          </button>
+        </div>
+      )}
 
       {/* Add Item Button */}
       <button

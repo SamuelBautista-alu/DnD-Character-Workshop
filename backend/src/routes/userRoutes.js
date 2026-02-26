@@ -1,5 +1,11 @@
 import express from "express";
 import authMiddleware from "../middleware/authMiddleware.js";
+import {
+  getProfile,
+  updateProfile,
+  changePassword,
+  deleteAccount,
+} from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -7,33 +13,25 @@ const router = express.Router();
  * GET /api/v1/users/profile
  * Get current user profile
  */
-router.get("/profile", authMiddleware, (req, res) => {
-  res.json({ message: "Get user profile endpoint - to be implemented" });
-});
+router.get("/profile", authMiddleware, getProfile);
 
 /**
  * PUT /api/v1/users/profile
  * Update user profile
  */
-router.put("/profile", authMiddleware, (req, res) => {
-  res.json({ message: "Update user profile endpoint - to be implemented" });
-});
+router.put("/profile", authMiddleware, updateProfile);
 
 /**
  * PUT /api/v1/users/password
  * Change password
  */
-router.put("/password", authMiddleware, (req, res) => {
-  res.json({ message: "Change password endpoint - to be implemented" });
-});
+router.put("/password", authMiddleware, changePassword);
 
 /**
  * DELETE /api/v1/users/account
  * Delete user account
  */
-router.delete("/account", authMiddleware, (req, res) => {
-  res.json({ message: "Delete account endpoint - to be implemented" });
-});
+router.delete("/account", authMiddleware, deleteAccount);
 
 /**
  * GET /api/v1/users/preferences

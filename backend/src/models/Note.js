@@ -27,19 +27,11 @@ const Note = db.define(
       allowNull: true,
       defaultValue: "",
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
   },
   {
     timestamps: true,
     tableName: "Notes",
-  }
+  },
 );
 
 export default Note;

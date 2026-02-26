@@ -1,46 +1,9 @@
 /**
  * D&D 5e Spells Database
- * Includes level, school, casting time, range, components, duration, and class availability
+ * Modularized spell data - organized by levels
  */
 
-export type SpellSchool =
-  | "Abjuration"
-  | "Conjuration"
-  | "Divination"
-  | "Enchantment"
-  | "Evocation"
-  | "Illusion"
-  | "Necromancy"
-  | "Transmutation";
-
-export type SpellClass =
-  | "Bard"
-  | "Cleric"
-  | "Druid"
-  | "Paladin"
-  | "Ranger"
-  | "Sorcerer"
-  | "Warlock"
-  | "Wizard";
-
-export interface Spell {
-  id: string;
-  name: string;
-  level: number; // 0 = cantrip, 1-9 = spell level
-  school: SpellSchool;
-  castingTime: string; // "1 action", "1 bonus action", "1 minute", etc.
-  range: string; // "Self", "Touch", "30 feet", etc.
-  components: {
-    verbal: boolean;
-    somatic: boolean;
-    material?: string; // material component description
-  };
-  duration: string; // "Instantaneous", "Concentration, up to 1 minute", etc.
-  description: string;
-  classes: SpellClass[]; // Which classes can learn this spell
-  ritual?: boolean; // Can be cast as a ritual
-  concentration?: boolean; // Requires concentration
-}
+import { Spell } from "./types";
 
 export const SPELLS: Record<string, Spell> = {
   // === Cantrips (Level 0) ===
@@ -338,7 +301,7 @@ export const SPELLS: Record<string, Spell> = {
     classes: ["Cleric", "Paladin"],
   },
 
-  // === 4th Level Spells ===
+  // === 4th+ Level Spells ===
   polymorph: {
     id: "polymorph",
     name: "Polymorph",
@@ -370,8 +333,6 @@ export const SPELLS: Record<string, Spell> = {
       "You teleport yourself from your current location to any other spot within range. You arrive at exactly the spot desired.",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
   },
-
-  // === 5th Level Spells ===
   cone_of_cold: {
     id: "cone_of_cold",
     name: "Cone of Cold",
@@ -402,8 +363,6 @@ export const SPELLS: Record<string, Spell> = {
       "A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to 3d8 + your spellcasting ability modifier.",
     classes: ["Bard", "Cleric", "Druid"],
   },
-
-  // === 6th Level Spells ===
   chain_lightning: {
     id: "chain_lightning",
     name: "Chain Lightning",
@@ -422,8 +381,6 @@ export const SPELLS: Record<string, Spell> = {
       "You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other targets.",
     classes: ["Sorcerer", "Wizard"],
   },
-
-  // === 7th Level Spells ===
   teleport: {
     id: "teleport",
     name: "Teleport",
@@ -437,8 +394,6 @@ export const SPELLS: Record<string, Spell> = {
       "This spell instantly transports you and up to eight willing creatures of your choice that you can see within range, or a single object that you can see within range, to a destination you select.",
     classes: ["Bard", "Sorcerer", "Wizard"],
   },
-
-  // === 8th Level Spells ===
   sunburst: {
     id: "sunburst",
     name: "Sunburst",
@@ -456,8 +411,6 @@ export const SPELLS: Record<string, Spell> = {
       "Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw.",
     classes: ["Druid", "Sorcerer", "Wizard"],
   },
-
-  // === 9th Level Spells ===
   wish: {
     id: "wish",
     name: "Wish",
@@ -485,98 +438,3 @@ export const SPELLS: Record<string, Spell> = {
     classes: ["Sorcerer", "Wizard"],
   },
 };
-
-/**
- * Get a spell by ID
- */
-export function getSpell(id?: string | null): Spell | undefined {
-  if (!id) return undefined;
-  return SPELLS[id];
-}
-
-/**
- * Get all spells as array
- */
-export function getAllSpells(): Spell[] {
-  return Object.values(SPELLS);
-}
-
-/**
- * Filter spells by level
- */
-export function getSpellsByLevel(level: number): Spell[] {
-  return getAllSpells().filter((spell) => spell.level === level);
-}
-
-/**
- * Filter spells by school
- */
-export function getSpellsBySchool(school: SpellSchool): Spell[] {
-  return getAllSpells().filter((spell) => spell.school === school);
-}
-
-/**
- * Filter spells by class
- */
-export function getSpellsByClass(className: SpellClass): Spell[] {
-  return getAllSpells().filter((spell) => spell.classes.includes(className));
-}
-
-/**
- * Search spells by name (case-insensitive)
- */
-export function searchSpells(query: string): Spell[] {
-  const lowerQuery = query.toLowerCase();
-  return getAllSpells().filter((spell) =>
-    spell.name.toLowerCase().includes(lowerQuery)
-  );
-}
-
-/**
- * Filter spells with multiple criteria
- */
-export function filterSpells(filters: {
-  level?: number;
-  school?: SpellSchool;
-  class?: SpellClass;
-  searchQuery?: string;
-}): Spell[] {
-  let results = getAllSpells();
-
-  if (filters.level !== undefined) {
-    results = results.filter((spell) => spell.level === filters.level);
-  }
-
-  if (filters.school) {
-    results = results.filter((spell) => spell.school === filters.school);
-  }
-
-  if (filters.class) {
-    results = results.filter((spell) => spell.classes.includes(filters.class!));
-  }
-
-  if (filters.searchQuery) {
-    const lowerQuery = filters.searchQuery.toLowerCase();
-    results = results.filter((spell) =>
-      spell.name.toLowerCase().includes(lowerQuery)
-    );
-  }
-
-  return results;
-}
-
-/**
- * Get spell schools for dropdown
- */
-export function getSpellSchools(): SpellSchool[] {
-  return [
-    "Abjuration",
-    "Conjuration",
-    "Divination",
-    "Enchantment",
-    "Evocation",
-    "Illusion",
-    "Necromancy",
-    "Transmutation",
-  ];
-}

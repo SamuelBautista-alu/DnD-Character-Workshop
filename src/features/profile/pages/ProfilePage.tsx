@@ -15,7 +15,8 @@ import { getTranslation } from "@/lib/i18n";
  */
 export default function ProfilePage() {
   const navigate = useNavigate();
-  const { email, username, logout } = useAuthStore();
+  const { email, username, logout, updateProfile, changePassword } =
+    useAuthStore();
   const { language } = useLanguageStore();
   const t = (key: string) => getTranslation(language, key);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -53,25 +54,39 @@ export default function ProfilePage() {
     }));
   };
 
-  const handleSaveProfile = () => {
-    // Llamada API para actualizar perfil (por implementar)
-    console.log("Saving profile:", formData);
-    setIsEditModalOpen(false);
+  const handleSaveProfile = async () => {
+    try {
+      await updateProfile(formData.username, formData.email);
+      setIsEditModalOpen(false);
+      // Optionally show success message
+    } catch (error) {
+      // Error is handled by the store
+      console.error("Failed to update profile:", error);
+    }
   };
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
       alert(t("profile.passwordModal.mismatchError"));
       return;
     }
-    // TODO: Implement API call to change password
-    console.log("Changing password:", passwordData);
-    setPasswordData({
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    });
-    setIsPasswordModalOpen(false);
+
+    try {
+      await changePassword(
+        passwordData.currentPassword,
+        passwordData.newPassword,
+      );
+      setPasswordData({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setIsPasswordModalOpen(false);
+      // Optionally show success message
+    } catch (error) {
+      // Error is handled by the store
+      console.error("Failed to change password:", error);
+    }
   };
 
   return (

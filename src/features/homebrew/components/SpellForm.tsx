@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HomebrewSpell } from "../types";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 
 interface SpellFormProps {
   onSubmit: (
@@ -11,14 +13,14 @@ interface SpellFormProps {
 }
 
 const SCHOOLS = [
-  "Abjuration",
-  "Conjuration",
-  "Divination",
-  "Enchantment",
-  "Evocation",
-  "Illusion",
-  "Necromancy",
-  "Transmutation",
+  "abjuration",
+  "conjuration",
+  "divination",
+  "enchantment",
+  "evocation",
+  "illusion",
+  "necromancy",
+  "transmutation",
 ];
 const COMPONENTS = ["Verbal", "Somatic", "Material"];
 
@@ -28,10 +30,13 @@ export default function SpellForm({
   isLoading = false,
   isEditing = false,
 }: SpellFormProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     level: initialData?.level || 1,
-    school: initialData?.school || "Evocation",
+    school: initialData?.school || "evocation",
     castingTime: initialData?.castingTime || "1 action",
     range: initialData?.range || "Self",
     duration: initialData?.duration || "Instantaneous",
@@ -46,22 +51,22 @@ export default function SpellForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Spell name is required";
+      newErrors.name = t("homebrew.form.spellForm.nameRequired");
     }
     if (formData.level < 0 || formData.level > 9) {
-      newErrors.level = "Spell level must be between 0 and 9";
+      newErrors.level = t("homebrew.form.spellForm.levelInvalid");
     }
     if (!formData.castingTime.trim()) {
-      newErrors.castingTime = "Casting time is required";
+      newErrors.castingTime = t("homebrew.form.spellForm.castingTimeRequired");
     }
     if (!formData.range.trim()) {
-      newErrors.range = "Range is required";
+      newErrors.range = t("homebrew.form.spellForm.rangeRequired");
     }
     if (!formData.duration.trim()) {
-      newErrors.duration = "Duration is required";
+      newErrors.duration = t("homebrew.form.spellForm.durationRequired");
     }
     if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
+      newErrors.description = t("homebrew.form.spellForm.descriptionRequired");
     }
 
     setErrors(newErrors);
@@ -78,7 +83,7 @@ export default function SpellForm({
         setFormData({
           name: "",
           level: 1,
-          school: "Evocation",
+          school: "evocation",
           castingTime: "1 action",
           range: "Self",
           duration: "Instantaneous",
@@ -129,14 +134,14 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Spell Name
+            {t("homebrew.form.spellForm.name")}
           </label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="e.g., Fireball"
+            placeholder={t("homebrew.form.spellForm.namePlaceholder")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -166,7 +171,7 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Level (0-9)
+            {t("homebrew.form.spellForm.level")}
           </label>
           <input
             type="number"
@@ -206,7 +211,7 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            School
+            {t("homebrew.form.spellForm.school")}
           </label>
           <select
             name="school"
@@ -223,7 +228,7 @@ export default function SpellForm({
           >
             {SCHOOLS.map((school) => (
               <option key={school} value={school}>
-                {school}
+                {t(`homebrew.form.spellForm.schools.${school}`)}
               </option>
             ))}
           </select>
@@ -234,14 +239,14 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Casting Time
+            {t("homebrew.form.spellForm.castingTime")}
           </label>
           <input
             type="text"
             name="castingTime"
             value={formData.castingTime}
             onChange={handleChange}
-            placeholder="e.g., 1 action"
+            placeholder={t("homebrew.form.spellForm.castingTimePlaceholder")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -273,14 +278,14 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Range
+            {t("homebrew.form.spellForm.range")}
           </label>
           <input
             type="text"
             name="range"
             value={formData.range}
             onChange={handleChange}
-            placeholder="e.g., 150 feet"
+            placeholder={t("homebrew.form.spellForm.rangePlaceholder")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -310,14 +315,14 @@ export default function SpellForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Duration
+            {t("homebrew.form.spellForm.duration")}
           </label>
           <input
             type="text"
             name="duration"
             value={formData.duration}
             onChange={handleChange}
-            placeholder="e.g., Instantaneous"
+            placeholder={t("homebrew.form.spellForm.durationPlaceholder")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -348,7 +353,7 @@ export default function SpellForm({
           className="block text-sm font-semibold mb-2"
           style={{ color: "var(--foreground)" }}
         >
-          Components
+          {t("homebrew.form.spellForm.components")}
         </label>
         <div className="flex gap-3">
           {COMPONENTS.map((component) => (
@@ -359,7 +364,9 @@ export default function SpellForm({
                 onChange={() => handleComponentToggle(component)}
                 style={{ cursor: "pointer" }}
               />
-              <span style={{ color: "var(--foreground)" }}>{component}</span>
+              <span style={{ color: "var(--foreground)" }}>
+                {t(`homebrew.form.spellForm.${component.toLowerCase()}`)}
+              </span>
             </label>
           ))}
         </div>
@@ -375,7 +382,7 @@ export default function SpellForm({
             style={{ cursor: "pointer" }}
           />
           <span style={{ color: "var(--foreground)" }}>
-            Requires Concentration
+            {t("homebrew.form.spellForm.concentration")}
           </span>
         </label>
       </div>
@@ -385,13 +392,13 @@ export default function SpellForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Description
+          {t("homebrew.form.spellForm.description")}
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Describe the spell effects..."
+          placeholder={t("homebrew.form.spellForm.descriptionPlaceholder")}
           rows={4}
           style={{
             width: "100%",
@@ -429,7 +436,11 @@ export default function SpellForm({
             opacity: isLoading ? 0.6 : 1,
           }}
         >
-          {isLoading ? "Saving..." : isEditing ? "Update" : "Create"}
+          {isLoading
+            ? t("homebrew.form.spellForm.saving")
+            : isEditing
+              ? t("homebrew.form.spellForm.update")
+              : t("homebrew.form.spellForm.create")}
         </button>
       </div>
     </form>

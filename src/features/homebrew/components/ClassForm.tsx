@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HomebrewClass } from "../types";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 
 interface ClassFormProps {
   onSubmit: (
@@ -16,6 +18,9 @@ export default function ClassForm({
   isLoading = false,
   isEditing = false,
 }: ClassFormProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     description: initialData?.description || "",
@@ -28,13 +33,13 @@ export default function ClassForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Class name is required";
+      newErrors.name = t("homebrew.form.classForm.nameRequired");
     }
     if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
+      newErrors.description = t("homebrew.form.classForm.descriptionRequired");
     }
     if (formData.hitDie < 6 || formData.hitDie > 12) {
-      newErrors.hitDie = "Hit die must be between 6 and 12";
+      newErrors.hitDie = t("homebrew.form.classForm.hitDieInvalid");
     }
 
     setErrors(newErrors);
@@ -56,7 +61,9 @@ export default function ClassForm({
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -75,14 +82,14 @@ export default function ClassForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Class Name
+          {t("homebrew.form.classForm.name")}
         </label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="e.g., Mystic Knight"
+          placeholder={t("homebrew.form.classForm.namePlaceholder")}
           style={{
             width: "100%",
             padding: "0.5rem 0.75rem",
@@ -112,13 +119,13 @@ export default function ClassForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Description
+          {t("homebrew.form.classForm.description")}
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Describe your class..."
+          placeholder={t("homebrew.form.classForm.descriptionPlaceholder")}
           rows={4}
           style={{
             width: "100%",
@@ -150,7 +157,7 @@ export default function ClassForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Hit Die (d6-d12)
+          {t("homebrew.form.classForm.hitDie")}
         </label>
         <select
           name="hitDie"
@@ -196,7 +203,11 @@ export default function ClassForm({
             opacity: isLoading ? 0.6 : 1,
           }}
         >
-          {isLoading ? "Saving..." : isEditing ? "Update" : "Create"}
+          {isLoading
+            ? t("homebrew.form.classForm.saving")
+            : isEditing
+              ? t("homebrew.form.classForm.update")
+              : t("homebrew.form.classForm.create")}
         </button>
       </div>
     </form>

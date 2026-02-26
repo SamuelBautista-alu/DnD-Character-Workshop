@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { fetchSpellsFromAPI, SpellListItem } from "@/lib/api";
 import { useLanguageStore } from "@/features/language/store";
 import { getTranslation } from "@/lib/i18n";
+import useHomebrewStore from "@/features/homebrew/store";
 import { Spell } from "../store";
 
 export default function SpellPickerModal({
@@ -30,6 +31,7 @@ export default function SpellPickerModal({
     () => ({ className, subclass }),
     [className, subclass],
   );
+  const homebrewSpells = useHomebrewStore((state) => state.spells);
 
   useEffect(() => {
     if (!open) return;
@@ -60,10 +62,22 @@ export default function SpellPickerModal({
     };
   }, [open, filters.className, filters.subclass, search, maxSpellLevel]);
 
-  const filteredByLevel = useMemo(() => {
-    if (selectedLevel === "all") return spells;
-    return spells.filter((s) => s.level === selectedLevel);
-  }, [spells, selectedLevel]);
+  const allSpells = useMemo(
+    () => [
+      ...spells,
+      ...homebrewSpells.map((spell) => ({
+        index: `homebrew-${spell.id}`,
+        name: spell.name,
+        level: spell.level,
+      })),
+    ],
+    [spells, homebrewSpells],
+  );
+
+  const filteredSpells = useMemo(() => {
+    if (selectedLevel === "all") return allSpells;
+    return allSpells.filter((spell) => spell.level === selectedLevel);
+  }, [allSpells, selectedLevel]);
 
   if (!open) return null;
 
@@ -158,13 +172,13 @@ export default function SpellPickerModal({
         <div style={{ padding: 16, overflow: "auto" }}>
           {loading ? (
             <div style={{ color: "var(--muted-foreground)" }}>Loading…</div>
-          ) : spells.length === 0 ? (
+          ) : filteredSpells.length === 0 ? (
             <div style={{ color: "var(--muted-foreground)" }}>
               {t("characterCreation.noSpellsFound")}
             </div>
           ) : (
             <div style={{ display: "grid", gap: 8 }}>
-              {filteredByLevel.map((s) => (
+              {filteredSpells.map((s) => (
                 <div
                   key={s.index}
                   style={{

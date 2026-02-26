@@ -96,7 +96,7 @@ interface HomebrewState {
   clearError: () => void;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
 
 const useHomebrewStore = create<HomebrewState>((set) => ({
   classes: [],
@@ -113,7 +113,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   fetchClasses: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/classes`, {
+      const res = await fetch(`${API_URL}/homebrew/classes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch classes");
@@ -128,7 +128,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   fetchRaces: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/races`, {
+      const res = await fetch(`${API_URL}/homebrew/races`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch races");
@@ -143,7 +143,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   fetchSpells: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/spells`, {
+      const res = await fetch(`${API_URL}/homebrew/spells`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch spells");
@@ -158,7 +158,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   fetchItems: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/items`, {
+      const res = await fetch(`${API_URL}/homebrew/items`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch items");
@@ -173,7 +173,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   fetchBackgrounds: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/backgrounds`, {
+      const res = await fetch(`${API_URL}/homebrew/backgrounds`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch backgrounds");
@@ -190,19 +190,19 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
     try {
       const [classesRes, racesRes, spellsRes, itemsRes, backgroundsRes] =
         await Promise.all([
-          fetch(`${API_URL}/v1/homebrew/classes`, {
+          fetch(`${API_URL}/homebrew/classes`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${API_URL}/v1/homebrew/races`, {
+          fetch(`${API_URL}/homebrew/races`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${API_URL}/v1/homebrew/spells`, {
+          fetch(`${API_URL}/homebrew/spells`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${API_URL}/v1/homebrew/items`, {
+          fetch(`${API_URL}/homebrew/items`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${API_URL}/v1/homebrew/backgrounds`, {
+          fetch(`${API_URL}/homebrew/backgrounds`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -234,7 +234,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Create Class
   createClass: async (data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/classes`, {
+      const res = await fetch(`${API_URL}/homebrew/classes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -255,7 +255,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Create Race
   createRace: async (data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/races`, {
+      const res = await fetch(`${API_URL}/homebrew/races`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -276,7 +276,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Create Spell
   createSpell: async (data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/spells`, {
+      const res = await fetch(`${API_URL}/homebrew/spells`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -297,7 +297,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Create Item
   createItem: async (data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/items`, {
+      const res = await fetch(`${API_URL}/homebrew/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -318,7 +318,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Create Background
   createBackground: async (data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/backgrounds`, {
+      const res = await fetch(`${API_URL}/homebrew/backgrounds`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -339,7 +339,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Update Class
   updateClass: async (id, data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/classes/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/classes/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -362,7 +362,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Update Race
   updateRace: async (id, data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/races/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/races/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -385,7 +385,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Update Spell
   updateSpell: async (id, data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/spells/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/spells/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -408,7 +408,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Update Item
   updateItem: async (id, data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/items/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -431,7 +431,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Update Background
   updateBackground: async (id, data, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/backgrounds/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/backgrounds/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -454,7 +454,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Delete Class
   deleteClass: async (id, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/classes/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/classes/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -469,7 +469,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Delete Race
   deleteRace: async (id, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/races/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/races/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -484,7 +484,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Delete Spell
   deleteSpell: async (id, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/spells/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/spells/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -499,7 +499,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Delete Item
   deleteItem: async (id, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/items/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/items/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -514,7 +514,7 @@ const useHomebrewStore = create<HomebrewState>((set) => ({
   // Delete Background
   deleteBackground: async (id, token) => {
     try {
-      const res = await fetch(`${API_URL}/v1/homebrew/backgrounds/${id}`, {
+      const res = await fetch(`${API_URL}/homebrew/backgrounds/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

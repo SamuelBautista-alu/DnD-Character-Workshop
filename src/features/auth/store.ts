@@ -26,7 +26,7 @@ export interface AuthState {
   register: (
     username: string,
     email: string,
-    password: string
+    password: string,
   ) => Promise<void>;
   setToken: (token: string) => void;
   setUser: (userId: string, email: string, username?: string) => void;
@@ -123,6 +123,49 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: false,
         }),
 
+      updateProfile: async (username?: string, email?: string) => {
+        set({ isLoading: true, error: null });
+        try {
+          const response = await axios.put(`${API_URL}/users/profile`, {
+            username,
+            email,
+          });
+          const { user } = response.data.data;
+          set({
+            username: user.username,
+            email: user.email,
+          });
+        } catch (err: unknown) {
+          const errorMessage =
+            axios.isAxiosError(err) && err.response?.data?.message
+              ? err.response.data.message
+              : "Failed to update profile";
+          set({ error: errorMessage, isLoading: false });
+          throw err;
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+
+      changePassword: async (currentPassword: string, newPassword: string) => {
+        set({ isLoading: true, error: null });
+        try {
+          await axios.put(`${API_URL}/users/password`, {
+            currentPassword,
+            newPassword,
+          });
+        } catch (err: unknown) {
+          const errorMessage =
+            axios.isAxiosError(err) && err.response?.data?.message
+              ? err.response.data.message
+              : "Failed to change password";
+          set({ error: errorMessage, isLoading: false });
+          throw err;
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+
       setLoading: (isLoading) => set({ isLoading }),
 
       setError: (error) => set({ error }),
@@ -132,8 +175,8 @@ export const useAuthStore = create<AuthState>()(
     {
       name: "auth-storage",
       version: 1,
-    }
-  )
+    },
+  ),
 );
 
 export default useAuthStore;

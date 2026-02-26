@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import useAuthStore from "@/features/auth/store";
 import useCharacterStore from "../store";
+import useHomebrewStore from "@/features/homebrew/store";
 import { Character } from "../store";
 import { getBackgroundOptions } from "@/rules/backgrounds";
 import { useLanguageStore } from "@/features/language/store";
@@ -56,6 +57,12 @@ export default function CharacterDetailPage() {
   const navigate = useNavigate();
   const { token } = useAuthStore();
   const {
+    fetchAll,
+    classes: homebrewClasses,
+    races: homebrewRaces,
+    backgrounds: homebrewBackgrounds,
+  } = useHomebrewStore();
+  const {
     currentCharacter,
     isLoading,
     error,
@@ -65,6 +72,38 @@ export default function CharacterDetailPage() {
   } = useCharacterStore();
   const { language } = useLanguageStore();
   const t = (key: string) => getTranslation(language, key);
+
+  useEffect(() => {
+    if (!token) return;
+    fetchAll(token);
+  }, [token, fetchAll]);
+
+  const availableClasses = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_CLASSES, ...homebrewClasses.map((item) => item.name)]),
+      ),
+    [homebrewClasses],
+  );
+
+  const availableRaces = useMemo(
+    () =>
+      Array.from(
+        new Set([...D20_RACES, ...homebrewRaces.map((item) => item.name)]),
+      ),
+    [homebrewRaces],
+  );
+
+  const backgroundOptions = useMemo(
+    () => [
+      ...getBackgroundOptions(),
+      ...homebrewBackgrounds.map((bg) => ({
+        id: String(bg.id),
+        name: `${bg.name} (Custom)`,
+      })),
+    ],
+    [homebrewBackgrounds],
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<Partial<Character>>(
     currentCharacter ? { ...currentCharacter } : { edition: "2014" },
@@ -390,7 +429,7 @@ export default function CharacterDetailPage() {
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     >
-                      {D20_CLASSES.map((cls) => (
+                      {availableClasses.map((cls) => (
                         <option key={cls} value={cls}>
                           {cls}
                         </option>
@@ -433,7 +472,7 @@ export default function CharacterDetailPage() {
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     >
-                      {D20_RACES.map((race) => (
+                      {availableRaces.map((race) => (
                         <option key={race} value={race}>
                           {race}
                         </option>
@@ -553,7 +592,7 @@ export default function CharacterDetailPage() {
                       <option value="">
                         {t("characterCreation.backgroundPlaceholder")}
                       </option>
-                      {getBackgroundOptions().map((bg) => (
+                      {backgroundOptions.map((bg) => (
                         <option key={bg.id} value={bg.id}>
                           {bg.name}
                         </option>
@@ -563,7 +602,7 @@ export default function CharacterDetailPage() {
                     <p style={{ color: "var(--foreground)" }}>
                       {(() => {
                         const bgId = (formData as any).backgroundId;
-                        const bgMatch = getBackgroundOptions().find(
+                        const bgMatch = backgroundOptions.find(
                           (bg) => String(bg.id) === String(bgId),
                         );
                         return (

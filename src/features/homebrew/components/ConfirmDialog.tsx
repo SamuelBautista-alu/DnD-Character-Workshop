@@ -1,3 +1,6 @@
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
+
 interface ConfirmDialogProps {
   isOpen: boolean;
   title: string;
@@ -14,13 +17,19 @@ export default function ConfirmDialog({
   isOpen,
   title,
   message,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
+  confirmText,
+  cancelText,
   isDangerous = false,
   isLoading = false,
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
+  const finalConfirmText = confirmText || t("homebrew.confirm.confirm");
+  const finalCancelText = cancelText || t("homebrew.confirm.cancel");
+
   if (!isOpen) return null;
 
   return (
@@ -62,7 +71,7 @@ export default function ConfirmDialog({
               opacity: isLoading ? 0.6 : 1,
             }}
           >
-            {cancelText}
+            {finalCancelText}
           </button>
           <button
             onClick={onConfirm}
@@ -74,7 +83,7 @@ export default function ConfirmDialog({
               opacity: isLoading ? 0.6 : 1,
             }}
           >
-            {isLoading ? "Processing..." : confirmText}
+            {isLoading ? t("homebrew.confirm.processing") : finalConfirmText}
           </button>
         </div>
       </div>

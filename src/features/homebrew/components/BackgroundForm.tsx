@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HomebrewBackground } from "../types";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 
 interface BackgroundFormProps {
   onSubmit: (
@@ -75,6 +77,9 @@ export default function BackgroundForm({
   isLoading = false,
   isEditing = false,
 }: BackgroundFormProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     description: initialData?.description || "",
@@ -89,10 +94,12 @@ export default function BackgroundForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Background name is required";
+      newErrors.name = t("homebrew.form.backgroundForm.nameRequired");
     }
     if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
+      newErrors.description = t(
+        "homebrew.form.backgroundForm.descriptionRequired",
+      );
     }
 
     setErrors(newErrors);
@@ -174,14 +181,14 @@ export default function BackgroundForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Background Name
+          {t("homebrew.form.backgroundForm.name")}
         </label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="e.g., Haunted One"
+          placeholder={t("homebrew.form.backgroundForm.namePlaceholder")}
           style={{
             width: "100%",
             padding: "0.5rem 0.75rem",
@@ -211,13 +218,13 @@ export default function BackgroundForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Description
+          {t("homebrew.form.backgroundForm.description")}
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Describe the background and its significance..."
+          placeholder={t("homebrew.form.backgroundForm.descriptionPlaceholder")}
           rows={3}
           style={{
             width: "100%",
@@ -249,7 +256,7 @@ export default function BackgroundForm({
           className="block text-sm font-semibold mb-2"
           style={{ color: "var(--foreground)" }}
         >
-          Skill Proficiencies
+          {t("homebrew.form.backgroundForm.skillProficiencies")}
         </label>
         <div
           className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto p-2 border rounded"
@@ -281,14 +288,14 @@ export default function BackgroundForm({
           className="block text-sm font-semibold mb-2"
           style={{ color: "var(--foreground)" }}
         >
-          Tool Proficiencies
+          {t("homebrew.form.backgroundForm.toolProficiencies")}
         </label>
         <div className="mb-2">
           <input
             type="text"
             value={toolInput}
             onChange={(e) => setToolInput(e.target.value)}
-            placeholder="Search or type tool name..."
+            placeholder={t("homebrew.form.backgroundForm.toolSearch")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -361,7 +368,11 @@ export default function BackgroundForm({
             opacity: isLoading ? 0.6 : 1,
           }}
         >
-          {isLoading ? "Saving..." : isEditing ? "Update" : "Create"}
+          {isLoading
+            ? t("homebrew.form.backgroundForm.saving")
+            : isEditing
+              ? t("homebrew.form.backgroundForm.update")
+              : t("homebrew.form.backgroundForm.create")}
         </button>
       </div>
     </form>

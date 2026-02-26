@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HomebrewRace } from "../types";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 
 interface RaceFormProps {
   onSubmit: (
@@ -25,6 +27,9 @@ export default function RaceForm({
   isLoading = false,
   isEditing = false,
 }: RaceFormProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     description: initialData?.description || "",
@@ -38,13 +43,13 @@ export default function RaceForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Race name is required";
+      newErrors.name = t("homebrew.form.raceForm.nameRequired");
     }
     if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
+      newErrors.description = t("homebrew.form.raceForm.descriptionRequired");
     }
     if (formData.speed < 20 || formData.speed > 60) {
-      newErrors.speed = "Speed must be between 20 and 60 feet";
+      newErrors.speed = t("homebrew.form.raceForm.speedInvalid");
     }
 
     setErrors(newErrors);
@@ -103,14 +108,14 @@ export default function RaceForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Race Name
+          {t("homebrew.form.raceForm.name")}
         </label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="e.g., Dragonborn"
+          placeholder={t("homebrew.form.raceForm.namePlaceholder")}
           style={{
             width: "100%",
             padding: "0.5rem 0.75rem",
@@ -140,13 +145,13 @@ export default function RaceForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Description
+          {t("homebrew.form.raceForm.description")}
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Describe your race..."
+          placeholder={t("homebrew.form.raceForm.descriptionPlaceholder")}
           rows={3}
           style={{
             width: "100%",
@@ -178,7 +183,7 @@ export default function RaceForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Speed (feet)
+          {t("homebrew.form.raceForm.speed")}
         </label>
         <input
           type="number"
@@ -213,19 +218,19 @@ export default function RaceForm({
 
       <div>
         <label
-          className="block text-sm font-semibold mb-3"
+          className="block text-sm font-semibold mb-2"
           style={{ color: "var(--foreground)" }}
         >
-          Ability Score Bonuses (optional)
+          {t("homebrew.form.raceForm.abilityScores")}
         </label>
         <div className="grid grid-cols-2 gap-2">
           {ABILITIES.map((ability) => (
             <div key={ability}>
               <label
-                className="text-xs font-semibold capitalize mb-1 block"
+                className="text-xs mb-1 block"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                {ability}
+                {t(`homebrew.form.raceForm.${ability}`)}
               </label>
               <input
                 type="number"
@@ -235,15 +240,14 @@ export default function RaceForm({
                   ] || ""
                 }
                 onChange={(e) => handleAbilityChange(ability, e.target.value)}
-                placeholder="+0"
+                placeholder={t("homebrew.form.raceForm.speedPlaceholder")}
                 style={{
                   width: "100%",
-                  padding: "0.5rem 0.5rem",
+                  padding: "0.5rem 0.75rem",
                   border: "1px solid var(--border)",
                   borderRadius: "0.375rem",
                   backgroundColor: "var(--input-background)",
                   color: "var(--foreground)",
-                  fontSize: "0.875rem",
                 }}
               />
             </div>
@@ -262,7 +266,11 @@ export default function RaceForm({
             opacity: isLoading ? 0.6 : 1,
           }}
         >
-          {isLoading ? "Saving..." : isEditing ? "Update" : "Create"}
+          {isLoading
+            ? t("homebrew.form.raceForm.saving")
+            : isEditing
+              ? t("homebrew.form.raceForm.update")
+              : t("homebrew.form.raceForm.create")}
         </button>
       </div>
     </form>

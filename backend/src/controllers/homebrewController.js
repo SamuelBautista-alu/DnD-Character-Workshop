@@ -45,6 +45,9 @@ export const getHomebrewById = async (req, res, next) => {
 // Create homebrew content
 export const createHomebrew = async (req, res, next) => {
   try {
+    console.log("🛠️ createHomebrew called");
+    console.log("Request body:", req.body);
+    console.log("Request user:", req.user);
     const userId = req.user.id;
     const { contentType, name, description, ...otherFields } = req.body;
 

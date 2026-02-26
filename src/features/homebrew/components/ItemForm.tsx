@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HomebrewItem } from "../types";
+import { useLanguageStore } from "@/features/language/store";
+import { getTranslation } from "@/lib/i18n";
 
 interface ItemFormProps {
   onSubmit: (
@@ -11,25 +13,25 @@ interface ItemFormProps {
 }
 
 const ITEM_TYPES = [
-  "Weapon",
-  "Armor",
-  "Shield",
-  "Wondrous Item",
-  "Potion",
-  "Scroll",
-  "Tool",
-  "Wand",
-  "Ring",
-  "Cloak",
-  "Other",
+  "weapon",
+  "armor",
+  "shield",
+  "wondrousItem",
+  "potion",
+  "scroll",
+  "tool",
+  "wand",
+  "ring",
+  "cloak",
+  "other",
 ];
 const RARITIES = [
-  "Common",
-  "Uncommon",
-  "Rare",
-  "Very Rare",
-  "Legendary",
-  "Artifact",
+  "common",
+  "uncommon",
+  "rare",
+  "veryRare",
+  "legendary",
+  "artifact",
 ];
 
 export default function ItemForm({
@@ -38,10 +40,13 @@ export default function ItemForm({
   isLoading = false,
   isEditing = false,
 }: ItemFormProps) {
+  const { language } = useLanguageStore();
+  const t = (key: string) => getTranslation(language, key);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
-    type: initialData?.type || "Wondrous Item",
-    rarity: initialData?.rarity || "Common",
+    type: initialData?.type || "wondrousItem",
+    rarity: initialData?.rarity || "common",
     description: initialData?.description || "",
     properties: initialData?.properties || {},
   });
@@ -56,16 +61,16 @@ export default function ItemForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Item name is required";
+      newErrors.name = t("homebrew.form.itemForm.nameRequired");
     }
     if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
+      newErrors.description = t("homebrew.form.itemForm.descriptionRequired");
     }
 
     try {
       JSON.parse(propertiesJson);
     } catch {
-      newErrors.properties = "Properties must be valid JSON";
+      newErrors.properties = t("homebrew.form.itemForm.propertiesInvalid");
     }
 
     setErrors(newErrors);
@@ -85,8 +90,8 @@ export default function ItemForm({
       if (!isEditing) {
         setFormData({
           name: "",
-          type: "Wondrous Item",
-          rarity: "Common",
+          type: "wondrousItem",
+          rarity: "common",
           description: "",
           properties: {},
         });
@@ -120,14 +125,14 @@ export default function ItemForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Item Name
+            {t("homebrew.form.itemForm.name")}
           </label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="e.g., Sword of Sharpness"
+            placeholder={t("homebrew.form.itemForm.namePlaceholder")}
             style={{
               width: "100%",
               padding: "0.5rem 0.75rem",
@@ -157,7 +162,7 @@ export default function ItemForm({
             className="block text-sm font-semibold mb-1"
             style={{ color: "var(--foreground)" }}
           >
-            Type
+            {t("homebrew.form.itemForm.type")}
           </label>
           <select
             name="type"
@@ -174,7 +179,7 @@ export default function ItemForm({
           >
             {ITEM_TYPES.map((type) => (
               <option key={type} value={type}>
-                {type}
+                {t(`homebrew.form.itemForm.types.${type}`)}
               </option>
             ))}
           </select>
@@ -186,7 +191,7 @@ export default function ItemForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Rarity
+          {t("homebrew.form.itemForm.rarity")}
         </label>
         <select
           name="rarity"
@@ -203,7 +208,7 @@ export default function ItemForm({
         >
           {RARITIES.map((rarity) => (
             <option key={rarity} value={rarity}>
-              {rarity}
+              {t(`homebrew.form.itemForm.rarities.${rarity}`)}
             </option>
           ))}
         </select>
@@ -214,13 +219,13 @@ export default function ItemForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Description
+          {t("homebrew.form.itemForm.description")}
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Describe the item effects and mechanics..."
+          placeholder={t("homebrew.form.itemForm.descriptionPlaceholder")}
           rows={4}
           style={{
             width: "100%",
@@ -252,12 +257,12 @@ export default function ItemForm({
           className="block text-sm font-semibold mb-1"
           style={{ color: "var(--foreground)" }}
         >
-          Properties (JSON)
+          {t("homebrew.form.itemForm.properties")}
         </label>
         <textarea
           value={propertiesJson}
           onChange={(e) => setPropertiesJson(e.target.value)}
-          placeholder='{"requiresAttunement": true, "weight": "1 lb"}'
+          placeholder={t("homebrew.form.itemForm.propertiesPlaceholder")}
           rows={3}
           style={{
             width: "100%",
@@ -296,7 +301,11 @@ export default function ItemForm({
             opacity: isLoading ? 0.6 : 1,
           }}
         >
-          {isLoading ? "Saving..." : isEditing ? "Update" : "Create"}
+          {isLoading
+            ? t("homebrew.form.itemForm.saving")
+            : isEditing
+              ? t("homebrew.form.itemForm.update")
+              : t("homebrew.form.itemForm.create")}
         </button>
       </div>
     </form>

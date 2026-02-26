@@ -36,7 +36,12 @@ export {
   getSpellsByClass,
   searchSpells,
   filterSpells,
+  getCommonSpells,
+  getSpellsByLevelRange,
+  requiresConcentration,
+  canCastAsRitual,
   getSpellSchools,
+  getSpellClasses,
 } from "./spells";
 export type { SpellcastingDetails } from "./spellcasting";
 export { calculateSpellcastingDetails } from "./spellcasting";

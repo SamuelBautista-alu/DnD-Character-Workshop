@@ -26,7 +26,7 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
+      className="flex items-center justify-center p-4"
       style={{ backgroundColor: "var(--background)" }}
     >
       <div
@@ -151,6 +151,19 @@ export default function LoginPage() {
             style={{ color: "var(--primary)" }}
           >
             {t("auth.login.register")}
+          </a>
+        </p>
+
+        <p
+          className="text-center mt-4"
+          style={{ color: "var(--muted-foreground)" }}
+        >
+          <a
+            href="/forgot-password"
+            className="font-semibold hover:underline transition-all"
+            style={{ color: "var(--primary)" }}
+          >
+            {t("auth.login.forgotPassword")}
           </a>
         </p>
       </div>
