@@ -104,7 +104,7 @@ JWT_SECRET=tu_secreto_jwt
 DATABASE_URL=./db/database.sqlite
 ```
 
-## Uso
+## Prueba local
 
 1. Abre tu navegador y ve a `http://localhost:5173` (frontend).
 2. Regístrate o inicia sesión.
@@ -163,10 +163,3 @@ dnd-character-workshop/
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## Documentación Adicional
-
-- [Especificación de la API](backend/API_SPECIFICATION.md)
-- [Memoria del Proyecto](MEMORIA_PROYECTO_TFG.md)
-- [Plan de Empresa](PLAN_DE_EMPRESA_DND.md)
-- [Informe de Auditoría de Seguridad](SECURITY_AUDIT_REPORT.md)
