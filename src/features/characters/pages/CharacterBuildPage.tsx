@@ -698,6 +698,7 @@ export default function CharacterBuildPage() {
             <ClassesTab
               formData={formData}
               handleChange={handleChange}
+              availableClasses={availableClasses}
               primaryClass={primaryClass}
               selectedClass={selectedClass}
               classLevels={classLevels}
@@ -1444,6 +1445,7 @@ function AbilitiesTab({
 function ClassesTab({
   formData,
   handleChange,
+  availableClasses,
   primaryClass,
   selectedClass,
   classLevels,
@@ -1462,6 +1464,7 @@ function ClassesTab({
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
+  availableClasses: string[];
   primaryClass: any;
   selectedClass: string;
   classLevels: number;

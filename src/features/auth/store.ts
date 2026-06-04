@@ -6,7 +6,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
+const API_URL = import.meta.env.VITE_API_URL || "/api/v1";
 
 /**
  * Interfaz del estado de autenticación
@@ -27,6 +27,11 @@ export interface AuthState {
     username: string,
     email: string,
     password: string,
+  ) => Promise<void>;
+  updateProfile: (username?: string, email?: string) => Promise<void>;
+  changePassword: (
+    currentPassword: string,
+    newPassword: string,
   ) => Promise<void>;
   setToken: (token: string) => void;
   setUser: (userId: string, email: string, username?: string) => void;

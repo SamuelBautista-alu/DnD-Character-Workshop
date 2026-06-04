@@ -1,4 +1,4 @@
-import { useCharacterStore } from "../../store";
+import { useCharacterStore } from "../store";
 
 export default function LevelStep() {
   const { character, setField } = useCharacterStore();

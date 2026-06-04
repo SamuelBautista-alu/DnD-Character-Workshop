@@ -19,7 +19,7 @@ import type { Skill } from "@/rules/editions/rules2014";
  * Gestiona el estado global de los personajes, cálculos de reglas y comunicación con API
  */
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
+const API_URL = import.meta.env.VITE_API_URL || "/api/v1";
 
 /**
  * Ayudante: Construye el array de clases desde classProgression

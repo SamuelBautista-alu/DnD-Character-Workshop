@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api/v1";
+
 export interface Note {
   id?: number;
   userId?: number;
@@ -36,7 +38,7 @@ const useNoteStore = create<NoteStore>((set, get) => ({
   fetchNotes: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/notes`, {
+      const response = await axios.get(`${API_URL}/notes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       set({ notes: response.data });
@@ -50,10 +52,9 @@ const useNoteStore = create<NoteStore>((set, get) => ({
   fetchNote: async (id: number, token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/v1/notes/${id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await axios.get(`${API_URL}/notes/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       set({ currentNote: response.data });
     } catch (error: any) {
       set({ error: error.message });
@@ -65,11 +66,9 @@ const useNoteStore = create<NoteStore>((set, get) => ({
   createNote: async (data: Note, token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(
-        `http://localhost:3000/api/v1/notes`,
-        data,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await axios.post(`${API_URL}/notes`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const newNote = response.data;
       set((state) => ({ notes: [newNote, ...state.notes] }));
       return newNote;
@@ -84,11 +83,9 @@ const useNoteStore = create<NoteStore>((set, get) => ({
   updateNote: async (id: number, data: Partial<Note>, token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.put(
-        `http://localhost:3000/api/v1/notes/${id}`,
-        data,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await axios.put(`${API_URL}/notes/${id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const updatedNote = response.data;
       set((state) => ({
         notes: state.notes.map((note) => (note.id === id ? updatedNote : note)),
@@ -106,7 +103,7 @@ const useNoteStore = create<NoteStore>((set, get) => ({
   deleteNote: async (id: number, token: string) => {
     set({ isLoading: true, error: null });
     try {
-      await axios.delete(`http://localhost:3000/api/v1/notes/${id}`, {
+      await axios.delete(`${API_URL}/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       set((state) => ({
